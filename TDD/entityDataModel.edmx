@@ -1,0 +1,3123 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="TddDbModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="AdminRoles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="AdminUsers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" Nullable="false" />
+        </EntityType>
+        <EntityType Name="AdminUsersRoles">
+          <Key>
+            <PropertyRef Name="AdminUserId" />
+            <PropertyRef Name="AdminRoleId" />
+          </Key>
+          <Property Name="AdminUserId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="AdminRoleId" Type="uniqueidentifier" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASPStateTempApplications">
+          <Key>
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="AppId" Type="int" Nullable="false" />
+          <Property Name="AppName" Type="char" MaxLength="280" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASPStateTempSessions">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="nvarchar" MaxLength="88" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Expires" Type="datetime" Nullable="false" />
+          <Property Name="LockDate" Type="datetime" Nullable="false" />
+          <Property Name="LockDateLocal" Type="datetime" Nullable="false" />
+          <Property Name="LockCookie" Type="int" Nullable="false" />
+          <Property Name="Timeout" Type="int" Nullable="false" />
+          <Property Name="Locked" Type="bit" Nullable="false" />
+          <Property Name="SessionItemShort" Type="varbinary" MaxLength="7000" />
+          <Property Name="SessionItemLong" Type="image" />
+          <Property Name="Flags" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BasketLines">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="BasketId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="Baskets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="UserKey" Type="nvarchar" MaxLength="150" />
+        </EntityType>
+        <EntityType Name="CharacterReplacementRules">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Character" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Replacement" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="SortId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Countries">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="CountryStates">
+          <Key>
+            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="StateCode" />
+          </Key>
+          <Property Name="CountryId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StateCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="StateName" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="Currencies">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="int" Nullable="false" />
+          <Property Name="ModificationType" Type="int" Nullable="false" />
+          <Property Name="IsValid" Type="bit" Nullable="false" />
+          <Property Name="Data" Type="xml" />
+        </EntityType>
+        <EntityType Name="CustomerSearchIndexes">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="AccountType" />
+          </Key>
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountType" Type="int" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="CustomerSegments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="CustomerStatistics">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="CustomerId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data" Type="xml" />
+        </EntityType>
+        <EntityType Name="EntityProperties">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="30" Nullable="false" />
+          <Property Name="Sorting" Type="int" Nullable="false" />
+          <Property Name="RelatedTableFieldName" Type="nvarchar" MaxLength="30" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="EntityName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="ExternalShippingMethods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="FaqPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="Url" Type="nvarchar" MaxLength="400" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FlexiPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="Url" Type="nvarchar" MaxLength="400" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HealthCheckStates">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="ServerId" />
+          </Key>
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ServerId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsCompleted" Type="bit" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="ItemTranslations">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="ItemId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="400" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="Languages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" />
+          <Property Name="DisplayName" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MailTemplates">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Subject" Type="nvarchar" MaxLength="50" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="Content" Type="ntext" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="MiniProfilerClientTimings">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MiniProfilerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="Start" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="Duration" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MiniProfilers">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="RootTimingId" Type="uniqueidentifier" />
+          <Property Name="Started" Type="datetime" Nullable="false" />
+          <Property Name="DurationMilliseconds" Type="decimal" Precision="7" Scale="1" Nullable="false" />
+          <Property Name="User" Type="nvarchar" MaxLength="100" />
+          <Property Name="HasUserViewed" Type="bit" Nullable="false" />
+          <Property Name="MachineName" Type="nvarchar" MaxLength="100" />
+          <Property Name="CustomLinksJson" Type="nvarchar(max)" />
+          <Property Name="ClientTimingsRedirectCount" Type="int" />
+        </EntityType>
+        <EntityType Name="MiniProfilerSqlTimingParameters">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="MiniProfilerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentSqlTimingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="130" Nullable="false" />
+          <Property Name="DbType" Type="nvarchar" MaxLength="50" />
+          <Property Name="Size" Type="int" />
+          <Property Name="Value" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MiniProfilerSqlTimings">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MiniProfilerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentTimingId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ExecuteType" Type="tinyint" Nullable="false" />
+          <Property Name="StartMilliseconds" Type="decimal" Precision="7" Scale="1" Nullable="false" />
+          <Property Name="DurationMilliseconds" Type="decimal" Precision="7" Scale="1" Nullable="false" />
+          <Property Name="FirstFetchDurationMilliseconds" Type="decimal" Precision="7" Scale="1" />
+          <Property Name="IsDuplicate" Type="bit" Nullable="false" />
+          <Property Name="StackTraceSnippet" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="CommandString" Type="nvarchar(max)" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MiniProfilerTimings">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="MiniProfilerId" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentTimingId" Type="uniqueidentifier" />
+          <Property Name="Name" Type="nvarchar" MaxLength="200" Nullable="false" />
+          <Property Name="DurationMilliseconds" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="StartMilliseconds" Type="decimal" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="IsRoot" Type="bit" Nullable="false" />
+          <Property Name="Depth" Type="smallint" Nullable="false" />
+          <Property Name="CustomTimingsJson" Type="nvarchar(max)" />
+        </EntityType>
+        <EntityType Name="MobileDevices">
+          <Key>
+            <PropertyRef Name="UUID" />
+          </Key>
+          <Property Name="UUID" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="MobileNavigationItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NavigationItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ParentId" Type="uniqueidentifier" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ImportedCategoryId" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="NewsItems">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ShortDescription" Type="ntext" />
+          <Property Name="MainDescription" Type="ntext" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="420" />
+          <Property Name="ItemDate" Type="datetime" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="Url" Type="nvarchar" MaxLength="400" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsletterSubscriptions">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Numbering">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Prefix" Type="nvarchar" MaxLength="2" />
+          <Property Name="MaxLength" Type="int" Nullable="false" />
+          <Property Name="Number" Type="bigint" Nullable="false" />
+          <Property Name="Value" Type="nvarchar" MaxLength="50" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="OfflineDataItems">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="Orders">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="AccountId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="OrderDate" Type="datetime" Nullable="false" />
+          <Property Name="BillToName" Type="nvarchar" MaxLength="256" />
+          <Property Name="State" Type="int" Nullable="false" />
+          <Property Name="Data" Type="xml" />
+        </EntityType>
+        <EntityType Name="PaymentMethods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="PaymentModuleId" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="SortNo" Type="int" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="256" />
+          <Property Name="Active" Type="bit" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="PaymentTransactionInfos">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="20" Nullable="false" />
+          <Property Name="OrderId" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderType" Type="int" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="PaymentMethodId" Type="uniqueidentifier" />
+          <Property Name="PaymentStatus" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductEnrichments">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="ntext" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="420" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="400" />
+          <Property Name="PageLayoutId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductImages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="VariantId" Type="nvarchar" MaxLength="50" />
+          <Property Name="OrderNo" Type="int" Nullable="false" />
+          <Property Name="Image" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ProductListPages">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="MetaDescription" Type="nvarchar" MaxLength="420" />
+          <Property Name="ProductSetId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="Url" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="ImportedCategoryId" Type="nvarchar" MaxLength="250" />
+          <Property Name="PageLayoutId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ProductReviews">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProductId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Rating" Type="int" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Description" Type="nvarchar" MaxLength="2000" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="StatusId" Type="nvarchar" MaxLength="255" Nullable="false" />
+          <Property Name="Date" Type="datetime" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="ProductTitle" Type="nvarchar" MaxLength="256" />
+        </EntityType>
+        <EntityType Name="Products">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Data" Type="xml" />
+        </EntityType>
+        <EntityType Name="ProductSearchIndexes">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="ProductSets">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Title" Type="nvarchar" MaxLength="250" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="ImportedCategoryId" Type="nvarchar" MaxLength="250" />
+        </EntityType>
+        <EntityType Name="PromotionCoupons">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Code" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Type" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="StartDate" Type="datetime" />
+          <Property Name="EndDate" Type="datetime" />
+          <Property Name="MaxUsageCount" Type="int" />
+          <Property Name="UsageCount" Type="int" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="SanaTexts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Description" Type="nvarchar(max)" />
+          <Property Name="GroupCode" Type="nvarchar" MaxLength="100" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="ServerCommands">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ServerId" Type="nvarchar" MaxLength="50" />
+          <Property Name="CommandId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="NoExpiration" Type="bit" Nullable="false" />
+          <Property Name="Created" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="Servers">
+          <Key>
+            <PropertyRef Name="ServerId" />
+          </Key>
+          <Property Name="ServerId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsTaskServer" Type="bit" Nullable="false" />
+          <Property Name="IsActiveTaskServer" Type="bit" Nullable="false" />
+          <Property Name="IsActiveWebServer" Type="bit" Nullable="false" />
+          <Property Name="IsWebServer" Type="bit" />
+          <Property Name="LastOnline" Type="datetime" />
+        </EntityType>
+        <EntityType Name="Settings">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Fields" Type="xml" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="SharedInfo">
+          <Key>
+            <PropertyRef Name="Key" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Key" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ShippingMethods">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ProviderType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Enabled" Type="bit" Nullable="false" />
+          <Property Name="ImagePath" Type="nvarchar" MaxLength="256" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="SortNo" Type="int" Nullable="false" />
+          <Property Name="ExternalShippingMethodId" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="ShopAccounts">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="ReferenceId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="ShopAccountType" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Activated" Type="bit" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="255" />
+          <Property Name="LastVisitDate" Type="datetime" />
+        </EntityType>
+        <EntityType Name="StockRanges">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CategoryId" Type="nvarchar" MaxLength="50" />
+          <Property Name="OutOfStock" Type="int" Nullable="false" />
+          <Property Name="LowStock" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskConfigurations">
+          <Key>
+            <PropertyRef Name="TaskName" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="TaskName" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TasksInfo">
+          <Key>
+            <PropertyRef Name="TaskName" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="TaskName" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="Status" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="LastRunTime" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Themes">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="ModifiedDate" Type="datetime" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="CreatedDate" Type="datetime" Nullable="false" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Major" />
+            <PropertyRef Name="Minor" />
+            <PropertyRef Name="Build" />
+            <PropertyRef Name="Revision" />
+          </Key>
+          <Property Name="Major" Type="int" Nullable="false" />
+          <Property Name="Minor" Type="int" Nullable="false" />
+          <Property Name="Build" Type="int" Nullable="false" />
+          <Property Name="Revision" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebsiteCountries">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="CountryId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Visible" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebsiteDomains">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Domain" Type="nvarchar" MaxLength="256" Nullable="false" />
+          <Property Name="IsDefault" Type="bit" Nullable="false" />
+          <Property Name="LanguageId" Type="int" />
+        </EntityType>
+        <EntityType Name="WebsiteErpStatuses">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="IsOnline" Type="bit" Nullable="false" />
+          <Property Name="ConnectionErrorsCount" Type="int" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+        </EntityType>
+        <EntityType Name="WebsiteLanguages">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="LanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebsiteRedirects">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="uniqueidentifier" Nullable="false" />
+          <Property Name="Url" Type="nvarchar" MaxLength="400" Nullable="false" />
+          <Property Name="WebsiteId" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Fields" Type="xml" />
+          <Property Name="Permanent" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Websites">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="Name" Type="nvarchar" MaxLength="50" Nullable="false" />
+          <Property Name="DefaultLanguageId" Type="int" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_AdminUsersRoles_AdminRoles">
+          <End Role="AdminRoles" Type="Self.AdminRoles" Multiplicity="1" />
+          <End Role="AdminUsersRoles" Type="Self.AdminUsersRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminRoles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminUsersRoles">
+              <PropertyRef Name="AdminRoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_AdminUsersRoles_AdminUsersRoles">
+          <End Role="AdminUsers" Type="Self.AdminUsers" Multiplicity="1" />
+          <End Role="AdminUsersRoles" Type="Self.AdminUsersRoles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="AdminUsers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="AdminUsersRoles">
+              <PropertyRef Name="AdminUserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_BasketLine_Basket">
+          <End Role="Baskets" Type="Self.Baskets" Multiplicity="1" />
+          <End Role="BasketLines" Type="Self.BasketLines" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Baskets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasketLines">
+              <PropertyRef Name="BasketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailTemplates_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="MailTemplates" Type="Self.MailTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MailTemplates">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailTemplates_Websites">
+          <End Role="Websites" Type="Self.Websites" Multiplicity="1" />
+          <End Role="MailTemplates" Type="Self.MailTemplates" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MailTemplates">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductReviews_Websites">
+          <End Role="Websites" Type="Self.Websites" Multiplicity="1" />
+          <End Role="ProductReviews" Type="Self.ProductReviews" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductReviews">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanaTexts_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="SanaTexts" Type="Self.SanaTexts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SanaTexts">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanaTexts_Websites">
+          <End Role="Websites" Type="Self.Websites" Multiplicity="1" />
+          <End Role="SanaTexts" Type="Self.SanaTexts" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SanaTexts">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingMethods_Websites">
+          <End Role="Websites" Type="Self.Websites" Multiplicity="1" />
+          <End Role="ShippingMethods" Type="Self.ShippingMethods" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShippingMethods">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteCountries_Countries">
+          <End Role="Countries" Type="Self.Countries" Multiplicity="1" />
+          <End Role="WebsiteCountries" Type="Self.WebsiteCountries" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteCountries">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteDomains_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="0..1" />
+          <End Role="WebsiteDomains" Type="Self.WebsiteDomains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteDomains">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteDomains_Website">
+          <End Role="Websites" Type="Self.Websites" Multiplicity="1" />
+          <End Role="WebsiteDomains" Type="Self.WebsiteDomains" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteDomains">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteDomains_WebsiteDomains">
+          <End Role="WebsiteDomains" Type="Self.WebsiteDomains" Multiplicity="1" />
+          <End Role="WebsiteDomains1" Type="Self.WebsiteDomains" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WebsiteDomains">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteDomains1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteLanguages_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="WebsiteLanguages" Type="Self.WebsiteLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteLanguages">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteLanguages_Website">
+          <End Role="Websites" Type="Self.Websites" Multiplicity="1" />
+          <End Role="WebsiteLanguages" Type="Self.WebsiteLanguages" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteLanguages">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteRedirects_Websites">
+          <End Role="Websites" Type="Self.Websites" Multiplicity="1" />
+          <End Role="WebsiteRedirects" Type="Self.WebsiteRedirects" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteRedirects">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Websites_Languages">
+          <End Role="Languages" Type="Self.Languages" Multiplicity="1" />
+          <End Role="Websites" Type="Self.Websites" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Websites">
+              <PropertyRef Name="DefaultLanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Function Name="CleanUpBaskets" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="months" Type="int" Mode="In" />
+          <Parameter Name="days" Type="int" Mode="In" />
+        </Function>
+        <Function Name="f_insert_as_last" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="xml">
+          <Parameter Name="x1" Type="xml" Mode="In" />
+          <Parameter Name="x2" Type="xml" Mode="In" />
+        </Function>
+        <Function Name="GenerateNumber" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="GetHashCode" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="input" Type="varchar" Mode="In" />
+          <Parameter Name="hash" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GetMajorVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="p_ver" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="GetXmlFieldValue" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+          <Parameter Name="xml" Type="xml" Mode="In" />
+          <Parameter Name="field" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="sc_xml_escape" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="true" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo" ReturnType="nvarchar(max)">
+          <Parameter Name="xml" Type="nvarchar(max)" Mode="In" />
+        </Function>
+        <Function Name="TempGetAppID" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="appName" Type="varchar" Mode="In" />
+          <Parameter Name="appId" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="TempGetStateItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="InOut" />
+          <Parameter Name="locked" Type="bit" Mode="InOut" />
+          <Parameter Name="lockDate" Type="datetime" Mode="InOut" />
+          <Parameter Name="lockCookie" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="TempGetStateItem2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="InOut" />
+          <Parameter Name="locked" Type="bit" Mode="InOut" />
+          <Parameter Name="lockAge" Type="int" Mode="InOut" />
+          <Parameter Name="lockCookie" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="TempGetStateItem3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="InOut" />
+          <Parameter Name="locked" Type="bit" Mode="InOut" />
+          <Parameter Name="lockAge" Type="int" Mode="InOut" />
+          <Parameter Name="lockCookie" Type="int" Mode="InOut" />
+          <Parameter Name="actionFlags" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="TempGetStateItemExclusive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="InOut" />
+          <Parameter Name="locked" Type="bit" Mode="InOut" />
+          <Parameter Name="lockDate" Type="datetime" Mode="InOut" />
+          <Parameter Name="lockCookie" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="TempGetStateItemExclusive2" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="InOut" />
+          <Parameter Name="locked" Type="bit" Mode="InOut" />
+          <Parameter Name="lockAge" Type="int" Mode="InOut" />
+          <Parameter Name="lockCookie" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="TempGetStateItemExclusive3" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="InOut" />
+          <Parameter Name="locked" Type="bit" Mode="InOut" />
+          <Parameter Name="lockAge" Type="int" Mode="InOut" />
+          <Parameter Name="lockCookie" Type="int" Mode="InOut" />
+          <Parameter Name="actionFlags" Type="int" Mode="InOut" />
+        </Function>
+        <Function Name="TempGetVersion" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="ver" Type="char" Mode="InOut" />
+        </Function>
+        <Function Name="TempInsertStateItemLong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemLong" Type="image" Mode="In" />
+          <Parameter Name="timeout" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempInsertStateItemShort" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="In" />
+          <Parameter Name="timeout" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempInsertUninitializedItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="In" />
+          <Parameter Name="timeout" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempReleaseStateItemExclusive" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="lockCookie" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempRemoveStateItem" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="lockCookie" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempResetTimeout" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+        </Function>
+        <Function Name="TempUpdateStateItemLong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemLong" Type="image" Mode="In" />
+          <Parameter Name="timeout" Type="int" Mode="In" />
+          <Parameter Name="lockCookie" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempUpdateStateItemLongNullShort" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemLong" Type="image" Mode="In" />
+          <Parameter Name="timeout" Type="int" Mode="In" />
+          <Parameter Name="lockCookie" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempUpdateStateItemShort" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="In" />
+          <Parameter Name="timeout" Type="int" Mode="In" />
+          <Parameter Name="lockCookie" Type="int" Mode="In" />
+        </Function>
+        <Function Name="TempUpdateStateItemShortNullLong" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
+          <Parameter Name="id" Type="nvarchar" Mode="In" />
+          <Parameter Name="itemShort" Type="varbinary" Mode="In" />
+          <Parameter Name="timeout" Type="int" Mode="In" />
+          <Parameter Name="lockCookie" Type="int" Mode="In" />
+        </Function>
+        <EntityContainer Name="TddDbModelStoreContainer">
+          <EntitySet Name="AdminRoles" EntityType="Self.AdminRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUsers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="AdminUsersRoles" EntityType="Self.AdminUsersRoles" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASPStateTempApplications" EntityType="Self.ASPStateTempApplications" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ASPStateTempSessions" EntityType="Self.ASPStateTempSessions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="BasketLines" EntityType="Self.BasketLines" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Baskets" EntityType="Self.Baskets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CharacterReplacementRules" EntityType="Self.CharacterReplacementRules" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Countries" EntityType="Self.Countries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CountryStates" EntityType="Self.CountryStates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Currencies" EntityType="Self.Currencies" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Customers" EntityType="Self.Customers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerSearchIndexes" EntityType="Self.CustomerSearchIndexes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerSegments" EntityType="Self.CustomerSegments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="CustomerStatistics" EntityType="Self.CustomerStatistics" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="EntityProperties" EntityType="Self.EntityProperties" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ExternalShippingMethods" EntityType="Self.ExternalShippingMethods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FaqPages" EntityType="Self.FaqPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="FlexiPages" EntityType="Self.FlexiPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="HealthCheckStates" EntityType="Self.HealthCheckStates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ItemTranslations" EntityType="Self.ItemTranslations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Languages" EntityType="Self.Languages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MailTemplates" EntityType="Self.MailTemplates" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiniProfilerClientTimings" EntityType="Self.MiniProfilerClientTimings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiniProfilers" EntityType="Self.MiniProfilers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiniProfilerSqlTimingParameters" EntityType="Self.MiniProfilerSqlTimingParameters" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiniProfilerSqlTimings" EntityType="Self.MiniProfilerSqlTimings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MiniProfilerTimings" EntityType="Self.MiniProfilerTimings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MobileDevices" EntityType="Self.MobileDevices" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="MobileNavigationItems" EntityType="Self.MobileNavigationItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NavigationItems" EntityType="Self.NavigationItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsItems" EntityType="Self.NewsItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="NewsletterSubscriptions" EntityType="Self.NewsletterSubscriptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Numbering" EntityType="Self.Numbering" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="OfflineDataItems" EntityType="Self.OfflineDataItems" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Orders" EntityType="Self.Orders" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PaymentTransactionInfos" EntityType="Self.PaymentTransactionInfos" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductEnrichments" EntityType="Self.ProductEnrichments" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductListPages" EntityType="Self.ProductListPages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductReviews" EntityType="Self.ProductReviews" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Products" EntityType="Self.Products" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductSearchIndexes" EntityType="Self.ProductSearchIndexes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ProductSets" EntityType="Self.ProductSets" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="PromotionCoupons" EntityType="Self.PromotionCoupons" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SanaTexts" EntityType="Self.SanaTexts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ServerCommands" EntityType="Self.ServerCommands" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Servers" EntityType="Self.Servers" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Settings" EntityType="Self.Settings" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="SharedInfo" EntityType="Self.SharedInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShippingMethods" EntityType="Self.ShippingMethods" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="ShopAccounts" EntityType="Self.ShopAccounts" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="StockRanges" EntityType="Self.StockRanges" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TaskConfigurations" EntityType="Self.TaskConfigurations" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="TasksInfo" EntityType="Self.TasksInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Themes" EntityType="Self.Themes" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="VersionInfo" EntityType="Self.VersionInfo" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebsiteCountries" EntityType="Self.WebsiteCountries" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebsiteDomains" EntityType="Self.WebsiteDomains" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebsiteErpStatuses" EntityType="Self.WebsiteErpStatuses" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebsiteLanguages" EntityType="Self.WebsiteLanguages" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="WebsiteRedirects" EntityType="Self.WebsiteRedirects" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Websites" EntityType="Self.Websites" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_AdminUsersRoles_AdminRoles" Association="Self.FK_AdminUsersRoles_AdminRoles">
+            <End Role="AdminRoles" EntitySet="AdminRoles" />
+            <End Role="AdminUsersRoles" EntitySet="AdminUsersRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_AdminUsersRoles_AdminUsersRoles" Association="Self.FK_AdminUsersRoles_AdminUsersRoles">
+            <End Role="AdminUsers" EntitySet="AdminUsers" />
+            <End Role="AdminUsersRoles" EntitySet="AdminUsersRoles" />
+          </AssociationSet>
+          <AssociationSet Name="FK_BasketLine_Basket" Association="Self.FK_BasketLine_Basket">
+            <End Role="Baskets" EntitySet="Baskets" />
+            <End Role="BasketLines" EntitySet="BasketLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailTemplates_Languages" Association="Self.FK_MailTemplates_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="MailTemplates" EntitySet="MailTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailTemplates_Websites" Association="Self.FK_MailTemplates_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="MailTemplates" EntitySet="MailTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductReviews_Websites" Association="Self.FK_ProductReviews_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="ProductReviews" EntitySet="ProductReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanaTexts_Languages" Association="Self.FK_SanaTexts_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="SanaTexts" EntitySet="SanaTexts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanaTexts_Websites" Association="Self.FK_SanaTexts_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="SanaTexts" EntitySet="SanaTexts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingMethods_Websites" Association="Self.FK_ShippingMethods_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="ShippingMethods" EntitySet="ShippingMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteCountries_Countries" Association="Self.FK_WebsiteCountries_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="WebsiteCountries" EntitySet="WebsiteCountries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteDomains_Languages" Association="Self.FK_WebsiteDomains_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="WebsiteDomains" EntitySet="WebsiteDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteDomains_Website" Association="Self.FK_WebsiteDomains_Website">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="WebsiteDomains" EntitySet="WebsiteDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteDomains_WebsiteDomains" Association="Self.FK_WebsiteDomains_WebsiteDomains">
+            <End Role="WebsiteDomains" EntitySet="WebsiteDomains" />
+            <End Role="WebsiteDomains1" EntitySet="WebsiteDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteLanguages_Languages" Association="Self.FK_WebsiteLanguages_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="WebsiteLanguages" EntitySet="WebsiteLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteLanguages_Website" Association="Self.FK_WebsiteLanguages_Website">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="WebsiteLanguages" EntitySet="WebsiteLanguages" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteRedirects_Websites" Association="Self.FK_WebsiteRedirects_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="WebsiteRedirects" EntitySet="WebsiteRedirects" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Websites_Languages" Association="Self.FK_Websites_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="Websites" EntitySet="Websites" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="TddDbModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="AdminRole">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="AdminUsers" Relationship="Self.AdminUsersRoles" FromRole="AdminRoles" ToRole="AdminUsers" />
+        </EntityType>
+        <EntityType Name="AdminUser">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+          <NavigationProperty Name="AdminRoles" Relationship="Self.AdminUsersRoles" FromRole="AdminUsers" ToRole="AdminRoles" />
+        </EntityType>
+        <EntityType Name="ASPStateTempApplication">
+          <Key>
+            <PropertyRef Name="AppId" />
+          </Key>
+          <Property Name="AppId" Type="Int32" Nullable="false" />
+          <Property Name="AppName" Type="String" MaxLength="280" FixedLength="true" Unicode="false" Nullable="false" />
+        </EntityType>
+        <EntityType Name="ASPStateTempSession">
+          <Key>
+            <PropertyRef Name="SessionId" />
+          </Key>
+          <Property Name="SessionId" Type="String" MaxLength="88" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Expires" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LockDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LockDateLocal" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="LockCookie" Type="Int32" Nullable="false" />
+          <Property Name="Timeout" Type="Int32" Nullable="false" />
+          <Property Name="Locked" Type="Boolean" Nullable="false" />
+          <Property Name="SessionItemShort" Type="Binary" MaxLength="7000" FixedLength="false" />
+          <Property Name="SessionItemLong" Type="Binary" MaxLength="Max" FixedLength="false" />
+          <Property Name="Flags" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="BasketLine">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="BasketId" Type="Guid" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Basket" Relationship="Self.FK_BasketLine_Basket" FromRole="BasketLines" ToRole="Baskets" />
+        </EntityType>
+        <EntityType Name="Basket">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="UserKey" Type="String" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="BasketLines" Relationship="Self.FK_BasketLine_Basket" FromRole="Baskets" ToRole="BasketLines" />
+        </EntityType>
+        <EntityType Name="CharacterReplacementRule">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Character" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Replacement" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SortId" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Country">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="WebsiteCountries" Relationship="Self.FK_WebsiteCountries_Countries" FromRole="Countries" ToRole="WebsiteCountries" />
+        </EntityType>
+        <EntityType Name="CountryState">
+          <Key>
+            <PropertyRef Name="CountryId" />
+            <PropertyRef Name="StateCode" />
+          </Key>
+          <Property Name="CountryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StateName" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Currency">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Customer">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="Int32" Nullable="false" />
+          <Property Name="ModificationType" Type="Int32" Nullable="false" />
+          <Property Name="IsValid" Type="Boolean" Nullable="false" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomerSearchIndex">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="AccountType" />
+          </Key>
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountType" Type="Int32" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomerSegment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="CustomerStatistic">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="CustomerId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="EntityProperty">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="30" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Sorting" Type="Int32" Nullable="false" />
+          <Property Name="RelatedTableFieldName" Type="String" MaxLength="30" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="EntityName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ExternalShippingMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="FaqPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="FlexiPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="HealthCheckState">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="ServerId" />
+          </Key>
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ServerId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsCompleted" Type="Boolean" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ItemTranslation">
+          <Key>
+            <PropertyRef Name="ItemId" />
+            <PropertyRef Name="LanguageId" />
+          </Key>
+          <Property Name="ItemId" Type="Guid" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Language">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" />
+          <Property Name="DisplayName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="MailTemplates" Relationship="Self.FK_MailTemplates_Languages" FromRole="Languages" ToRole="MailTemplates" />
+          <NavigationProperty Name="SanaTexts" Relationship="Self.FK_SanaTexts_Languages" FromRole="Languages" ToRole="SanaTexts" />
+          <NavigationProperty Name="WebsiteDomains" Relationship="Self.FK_WebsiteDomains_Languages" FromRole="Languages" ToRole="WebsiteDomains" />
+          <NavigationProperty Name="Websites" Relationship="Self.FK_Websites_Languages" FromRole="Languages" ToRole="Websites" />
+          <NavigationProperty Name="Websites1" Relationship="Self.WebsiteLanguages" FromRole="Languages" ToRole="Websites" />
+        </EntityType>
+        <EntityType Name="MailTemplate">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Subject" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Content" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_MailTemplates_Languages" FromRole="MailTemplates" ToRole="Languages" />
+          <NavigationProperty Name="Website" Relationship="Self.FK_MailTemplates_Websites" FromRole="MailTemplates" ToRole="Websites" />
+        </EntityType>
+        <EntityType Name="MiniProfilerClientTiming">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MiniProfilerId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Start" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="Duration" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MiniProfiler">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="RootTimingId" Type="Guid" />
+          <Property Name="Started" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="DurationMilliseconds" Type="Decimal" Precision="7" Scale="1" Nullable="false" />
+          <Property Name="User" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="HasUserViewed" Type="Boolean" Nullable="false" />
+          <Property Name="MachineName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="CustomLinksJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ClientTimingsRedirectCount" Type="Int32" />
+        </EntityType>
+        <EntityType Name="MiniProfilerSqlTimingParameter">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="MiniProfilerId" Type="Guid" Nullable="false" />
+          <Property Name="ParentSqlTimingId" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="130" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DbType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Size" Type="Int32" />
+          <Property Name="Value" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MiniProfilerSqlTiming">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MiniProfilerId" Type="Guid" Nullable="false" />
+          <Property Name="ParentTimingId" Type="Guid" Nullable="false" />
+          <Property Name="ExecuteType" Type="Byte" Nullable="false" />
+          <Property Name="StartMilliseconds" Type="Decimal" Precision="7" Scale="1" Nullable="false" />
+          <Property Name="DurationMilliseconds" Type="Decimal" Precision="7" Scale="1" Nullable="false" />
+          <Property Name="FirstFetchDurationMilliseconds" Type="Decimal" Precision="7" Scale="1" />
+          <Property Name="IsDuplicate" Type="Boolean" Nullable="false" />
+          <Property Name="StackTraceSnippet" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CommandString" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="MiniProfilerTiming">
+          <Key>
+            <PropertyRef Name="RowId" />
+          </Key>
+          <Property Name="RowId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="MiniProfilerId" Type="Guid" Nullable="false" />
+          <Property Name="ParentTimingId" Type="Guid" />
+          <Property Name="Name" Type="String" MaxLength="200" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DurationMilliseconds" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="StartMilliseconds" Type="Decimal" Precision="9" Scale="3" Nullable="false" />
+          <Property Name="IsRoot" Type="Boolean" Nullable="false" />
+          <Property Name="Depth" Type="Int16" Nullable="false" />
+          <Property Name="CustomTimingsJson" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MobileDevice">
+          <Key>
+            <PropertyRef Name="UUID" />
+          </Key>
+          <Property Name="UUID" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="MobileNavigationItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ParentId" Type="Guid" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NavigationItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ParentId" Type="Guid" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImportedCategoryId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="NewsItem">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ShortDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MainDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="MetaDescription" Type="String" MaxLength="420" FixedLength="false" Unicode="true" />
+          <Property Name="ItemDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="NewsletterSubscription">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="Email" />
+          </Key>
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Numbering">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Prefix" Type="String" MaxLength="2" FixedLength="false" Unicode="true" />
+          <Property Name="MaxLength" Type="Int32" Nullable="false" />
+          <Property Name="Number" Type="Int64" Nullable="false" />
+          <Property Name="Value" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="OfflineDataItem">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Order">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="AccountId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="BillToName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="State" Type="Int32" Nullable="false" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PaymentMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="PaymentModuleId" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="SortNo" Type="Int32" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Active" Type="Boolean" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PaymentTransactionInfo">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="20" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="OrderId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderType" Type="Int32" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="PaymentMethodId" Type="Guid" />
+          <Property Name="PaymentStatus" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductEnrichment">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ProductId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="420" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" />
+          <Property Name="PageLayoutId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductImage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="VariantId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OrderNo" Type="Int32" Nullable="false" />
+          <Property Name="Image" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ProductListPage">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="MetaDescription" Type="String" MaxLength="420" FixedLength="false" Unicode="true" />
+          <Property Name="ProductSetId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ImportedCategoryId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+          <Property Name="PageLayoutId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductReview">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProductId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Rating" Type="Int32" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="2000" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="StatusId" Type="String" MaxLength="255" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Date" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductTitle" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Website" Relationship="Self.FK_ProductReviews_Websites" FromRole="ProductReviews" ToRole="Websites" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="Id" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Data" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductSearchIndex">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="ProductSet">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Title" Type="String" MaxLength="250" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="ImportedCategoryId" Type="String" MaxLength="250" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="PromotionCoupon">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Code" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Type" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="StartDate" Type="DateTime" Precision="3" />
+          <Property Name="EndDate" Type="DateTime" Precision="3" />
+          <Property Name="MaxUsageCount" Type="Int32" />
+          <Property Name="UsageCount" Type="Int32" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="SanaText">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="GroupCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_SanaTexts_Languages" FromRole="SanaTexts" ToRole="Languages" />
+          <NavigationProperty Name="Website" Relationship="Self.FK_SanaTexts_Websites" FromRole="SanaTexts" ToRole="Websites" />
+        </EntityType>
+        <EntityType Name="ServerCommand">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ServerId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CommandId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="NoExpiration" Type="Boolean" Nullable="false" />
+          <Property Name="Created" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Server">
+          <Key>
+            <PropertyRef Name="ServerId" />
+          </Key>
+          <Property Name="ServerId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsTaskServer" Type="Boolean" Nullable="false" />
+          <Property Name="IsActiveTaskServer" Type="Boolean" Nullable="false" />
+          <Property Name="IsActiveWebServer" Type="Boolean" Nullable="false" />
+          <Property Name="IsWebServer" Type="Boolean" />
+          <Property Name="LastOnline" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="Setting">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="Key" />
+          </Key>
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="SharedInfo">
+          <Key>
+            <PropertyRef Name="Key" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="Key" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="ShippingMethod">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ProviderType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Enabled" Type="Boolean" Nullable="false" />
+          <Property Name="ImagePath" Type="String" MaxLength="256" FixedLength="false" Unicode="true" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="SortNo" Type="Int32" Nullable="false" />
+          <Property Name="ExternalShippingMethodId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="Website" Relationship="Self.FK_ShippingMethods_Websites" FromRole="ShippingMethods" ToRole="Websites" />
+        </EntityType>
+        <EntityType Name="ShopAccount">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="ReferenceId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="ShopAccountType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Activated" Type="Boolean" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="255" FixedLength="false" Unicode="true" />
+          <Property Name="LastVisitDate" Type="DateTime" Precision="3" />
+        </EntityType>
+        <EntityType Name="StockRanx">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CategoryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="OutOfStock" Type="Int32" Nullable="false" />
+          <Property Name="LowStock" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TaskConfiguration">
+          <Key>
+            <PropertyRef Name="TaskName" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="TaskName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="TasksInfo">
+          <Key>
+            <PropertyRef Name="TaskName" />
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="TaskName" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Status" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="LastRunTime" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Theme">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ModifiedDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedDate" Type="DateTime" Nullable="false" Precision="3" />
+        </EntityType>
+        <EntityType Name="VersionInfo">
+          <Key>
+            <PropertyRef Name="Major" />
+            <PropertyRef Name="Minor" />
+            <PropertyRef Name="Build" />
+            <PropertyRef Name="Revision" />
+          </Key>
+          <Property Name="Major" Type="Int32" Nullable="false" />
+          <Property Name="Minor" Type="Int32" Nullable="false" />
+          <Property Name="Build" Type="Int32" Nullable="false" />
+          <Property Name="Revision" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="WebsiteCountry">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+            <PropertyRef Name="CountryId" />
+          </Key>
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="CountryId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Visible" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Country" Relationship="Self.FK_WebsiteCountries_Countries" FromRole="WebsiteCountries" ToRole="Countries" />
+        </EntityType>
+        <EntityType Name="WebsiteDomain">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Domain" Type="String" MaxLength="256" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsDefault" Type="Boolean" Nullable="false" />
+          <Property Name="LanguageId" Type="Int32" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_WebsiteDomains_Languages" FromRole="WebsiteDomains" ToRole="Languages" />
+          <NavigationProperty Name="Website" Relationship="Self.FK_WebsiteDomains_Website" FromRole="WebsiteDomains" ToRole="Websites" />
+          <NavigationProperty Name="WebsiteDomains1" Relationship="Self.FK_WebsiteDomains_WebsiteDomains" FromRole="WebsiteDomains" ToRole="WebsiteDomains1" />
+          <NavigationProperty Name="WebsiteDomain1" Relationship="Self.FK_WebsiteDomains_WebsiteDomains" FromRole="WebsiteDomains1" ToRole="WebsiteDomains" />
+        </EntityType>
+        <EntityType Name="WebsiteErpStatus">
+          <Key>
+            <PropertyRef Name="WebsiteId" />
+          </Key>
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="IsOnline" Type="Boolean" Nullable="false" />
+          <Property Name="ConnectionErrorsCount" Type="Int32" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="WebsiteRedirect">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Guid" Nullable="false" />
+          <Property Name="Url" Type="String" MaxLength="400" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="WebsiteId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Fields" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="Permanent" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="Website" Relationship="Self.FK_WebsiteRedirects_Websites" FromRole="WebsiteRedirects" ToRole="Websites" />
+        </EntityType>
+        <EntityType Name="Website">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="Name" Type="String" MaxLength="50" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="DefaultLanguageId" Type="Int32" Nullable="false" />
+          <NavigationProperty Name="Language" Relationship="Self.FK_Websites_Languages" FromRole="Websites" ToRole="Languages" />
+          <NavigationProperty Name="MailTemplates" Relationship="Self.FK_MailTemplates_Websites" FromRole="Websites" ToRole="MailTemplates" />
+          <NavigationProperty Name="ProductReviews" Relationship="Self.FK_ProductReviews_Websites" FromRole="Websites" ToRole="ProductReviews" />
+          <NavigationProperty Name="SanaTexts" Relationship="Self.FK_SanaTexts_Websites" FromRole="Websites" ToRole="SanaTexts" />
+          <NavigationProperty Name="ShippingMethods" Relationship="Self.FK_ShippingMethods_Websites" FromRole="Websites" ToRole="ShippingMethods" />
+          <NavigationProperty Name="WebsiteDomains" Relationship="Self.FK_WebsiteDomains_Website" FromRole="Websites" ToRole="WebsiteDomains" />
+          <NavigationProperty Name="WebsiteRedirects" Relationship="Self.FK_WebsiteRedirects_Websites" FromRole="Websites" ToRole="WebsiteRedirects" />
+          <NavigationProperty Name="Languages" Relationship="Self.WebsiteLanguages" FromRole="Websites" ToRole="Languages" />
+        </EntityType>
+        <Association Name="FK_BasketLine_Basket">
+          <End Role="Baskets" Type="Self.Basket" Multiplicity="1" />
+          <End Role="BasketLines" Type="Self.BasketLine" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Baskets">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="BasketLines">
+              <PropertyRef Name="BasketId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteCountries_Countries">
+          <End Role="Countries" Type="Self.Country" Multiplicity="1" />
+          <End Role="WebsiteCountries" Type="Self.WebsiteCountry" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Countries">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteCountries">
+              <PropertyRef Name="CountryId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailTemplates_Languages">
+          <End Role="Languages" Type="Self.Language" Multiplicity="1" />
+          <End Role="MailTemplates" Type="Self.MailTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MailTemplates">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanaTexts_Languages">
+          <End Role="Languages" Type="Self.Language" Multiplicity="1" />
+          <End Role="SanaTexts" Type="Self.SanaText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SanaTexts">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteDomains_Languages">
+          <End Role="Languages" Type="Self.Language" Multiplicity="0..1" />
+          <End Role="WebsiteDomains" Type="Self.WebsiteDomain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteDomains">
+              <PropertyRef Name="LanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Websites_Languages">
+          <End Role="Languages" Type="Self.Language" Multiplicity="1" />
+          <End Role="Websites" Type="Self.Website" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Languages">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="Websites">
+              <PropertyRef Name="DefaultLanguageId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_MailTemplates_Websites">
+          <End Role="Websites" Type="Self.Website" Multiplicity="1" />
+          <End Role="MailTemplates" Type="Self.MailTemplate" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="MailTemplates">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ProductReviews_Websites">
+          <End Role="Websites" Type="Self.Website" Multiplicity="1" />
+          <End Role="ProductReviews" Type="Self.ProductReview" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ProductReviews">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_SanaTexts_Websites">
+          <End Role="Websites" Type="Self.Website" Multiplicity="1" />
+          <End Role="SanaTexts" Type="Self.SanaText" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="SanaTexts">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ShippingMethods_Websites">
+          <End Role="Websites" Type="Self.Website" Multiplicity="1" />
+          <End Role="ShippingMethods" Type="Self.ShippingMethod" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="ShippingMethods">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteDomains_Website">
+          <End Role="Websites" Type="Self.Website" Multiplicity="1" />
+          <End Role="WebsiteDomains" Type="Self.WebsiteDomain" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteDomains">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteDomains_WebsiteDomains">
+          <End Role="WebsiteDomains" Type="Self.WebsiteDomain" Multiplicity="1" />
+          <End Role="WebsiteDomains1" Type="Self.WebsiteDomain" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="WebsiteDomains">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteDomains1">
+              <PropertyRef Name="Id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_WebsiteRedirects_Websites">
+          <End Role="Websites" Type="Self.Website" Multiplicity="1" />
+          <End Role="WebsiteRedirects" Type="Self.WebsiteRedirect" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Websites">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="WebsiteRedirects">
+              <PropertyRef Name="WebsiteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="AdminUsersRoles">
+          <End Role="AdminRoles" Type="Self.AdminRole" Multiplicity="*" />
+          <End Role="AdminUsers" Type="Self.AdminUser" Multiplicity="*" />
+        </Association>
+        <Association Name="WebsiteLanguages">
+          <End Role="Languages" Type="Self.Language" Multiplicity="*" />
+          <End Role="Websites" Type="Self.Website" Multiplicity="*" />
+        </Association>
+        <EntityContainer Name="SanaStore91Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="AdminRoles" EntityType="Self.AdminRole" />
+          <EntitySet Name="AdminUsers" EntityType="Self.AdminUser" />
+          <EntitySet Name="ASPStateTempApplications" EntityType="Self.ASPStateTempApplication" />
+          <EntitySet Name="ASPStateTempSessions" EntityType="Self.ASPStateTempSession" />
+          <EntitySet Name="BasketLines" EntityType="Self.BasketLine" />
+          <EntitySet Name="Baskets" EntityType="Self.Basket" />
+          <EntitySet Name="CharacterReplacementRules" EntityType="Self.CharacterReplacementRule" />
+          <EntitySet Name="Countries" EntityType="Self.Country" />
+          <EntitySet Name="CountryStates" EntityType="Self.CountryState" />
+          <EntitySet Name="Currencies" EntityType="Self.Currency" />
+          <EntitySet Name="Customers" EntityType="Self.Customer" />
+          <EntitySet Name="CustomerSearchIndexes" EntityType="Self.CustomerSearchIndex" />
+          <EntitySet Name="CustomerSegments" EntityType="Self.CustomerSegment" />
+          <EntitySet Name="CustomerStatistics" EntityType="Self.CustomerStatistic" />
+          <EntitySet Name="EntityProperties" EntityType="Self.EntityProperty" />
+          <EntitySet Name="ExternalShippingMethods" EntityType="Self.ExternalShippingMethod" />
+          <EntitySet Name="FaqPages" EntityType="Self.FaqPage" />
+          <EntitySet Name="FlexiPages" EntityType="Self.FlexiPage" />
+          <EntitySet Name="HealthCheckStates" EntityType="Self.HealthCheckState" />
+          <EntitySet Name="ItemTranslations" EntityType="Self.ItemTranslation" />
+          <EntitySet Name="Languages" EntityType="Self.Language" />
+          <EntitySet Name="MailTemplates" EntityType="Self.MailTemplate" />
+          <EntitySet Name="MiniProfilerClientTimings" EntityType="Self.MiniProfilerClientTiming" />
+          <EntitySet Name="MiniProfilers" EntityType="Self.MiniProfiler" />
+          <EntitySet Name="MiniProfilerSqlTimingParameters" EntityType="Self.MiniProfilerSqlTimingParameter" />
+          <EntitySet Name="MiniProfilerSqlTimings" EntityType="Self.MiniProfilerSqlTiming" />
+          <EntitySet Name="MiniProfilerTimings" EntityType="Self.MiniProfilerTiming" />
+          <EntitySet Name="MobileDevices" EntityType="Self.MobileDevice" />
+          <EntitySet Name="MobileNavigationItems" EntityType="Self.MobileNavigationItem" />
+          <EntitySet Name="NavigationItems" EntityType="Self.NavigationItem" />
+          <EntitySet Name="NewsItems" EntityType="Self.NewsItem" />
+          <EntitySet Name="NewsletterSubscriptions" EntityType="Self.NewsletterSubscription" />
+          <EntitySet Name="Numberings" EntityType="Self.Numbering" />
+          <EntitySet Name="OfflineDataItems" EntityType="Self.OfflineDataItem" />
+          <EntitySet Name="Orders" EntityType="Self.Order" />
+          <EntitySet Name="PaymentMethods" EntityType="Self.PaymentMethod" />
+          <EntitySet Name="PaymentTransactionInfos" EntityType="Self.PaymentTransactionInfo" />
+          <EntitySet Name="ProductEnrichments" EntityType="Self.ProductEnrichment" />
+          <EntitySet Name="ProductImages" EntityType="Self.ProductImage" />
+          <EntitySet Name="ProductListPages" EntityType="Self.ProductListPage" />
+          <EntitySet Name="ProductReviews" EntityType="Self.ProductReview" />
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="ProductSearchIndexes" EntityType="Self.ProductSearchIndex" />
+          <EntitySet Name="ProductSets" EntityType="Self.ProductSet" />
+          <EntitySet Name="PromotionCoupons" EntityType="Self.PromotionCoupon" />
+          <EntitySet Name="SanaTexts" EntityType="Self.SanaText" />
+          <EntitySet Name="ServerCommands" EntityType="Self.ServerCommand" />
+          <EntitySet Name="Servers" EntityType="Self.Server" />
+          <EntitySet Name="Settings" EntityType="Self.Setting" />
+          <EntitySet Name="SharedInfoes" EntityType="Self.SharedInfo" />
+          <EntitySet Name="ShippingMethods" EntityType="Self.ShippingMethod" />
+          <EntitySet Name="ShopAccounts" EntityType="Self.ShopAccount" />
+          <EntitySet Name="StockRanges" EntityType="Self.StockRanx" />
+          <EntitySet Name="TaskConfigurations" EntityType="Self.TaskConfiguration" />
+          <EntitySet Name="TasksInfoes" EntityType="Self.TasksInfo" />
+          <EntitySet Name="Themes" EntityType="Self.Theme" />
+          <EntitySet Name="VersionInfoes" EntityType="Self.VersionInfo" />
+          <EntitySet Name="WebsiteCountries" EntityType="Self.WebsiteCountry" />
+          <EntitySet Name="WebsiteDomains" EntityType="Self.WebsiteDomain" />
+          <EntitySet Name="WebsiteErpStatuses" EntityType="Self.WebsiteErpStatus" />
+          <EntitySet Name="WebsiteRedirects" EntityType="Self.WebsiteRedirect" />
+          <EntitySet Name="Websites" EntityType="Self.Website" />
+          <AssociationSet Name="FK_BasketLine_Basket" Association="Self.FK_BasketLine_Basket">
+            <End Role="Baskets" EntitySet="Baskets" />
+            <End Role="BasketLines" EntitySet="BasketLines" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteCountries_Countries" Association="Self.FK_WebsiteCountries_Countries">
+            <End Role="Countries" EntitySet="Countries" />
+            <End Role="WebsiteCountries" EntitySet="WebsiteCountries" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailTemplates_Languages" Association="Self.FK_MailTemplates_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="MailTemplates" EntitySet="MailTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanaTexts_Languages" Association="Self.FK_SanaTexts_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="SanaTexts" EntitySet="SanaTexts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteDomains_Languages" Association="Self.FK_WebsiteDomains_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="WebsiteDomains" EntitySet="WebsiteDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Websites_Languages" Association="Self.FK_Websites_Languages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="Websites" EntitySet="Websites" />
+          </AssociationSet>
+          <AssociationSet Name="FK_MailTemplates_Websites" Association="Self.FK_MailTemplates_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="MailTemplates" EntitySet="MailTemplates" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ProductReviews_Websites" Association="Self.FK_ProductReviews_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="ProductReviews" EntitySet="ProductReviews" />
+          </AssociationSet>
+          <AssociationSet Name="FK_SanaTexts_Websites" Association="Self.FK_SanaTexts_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="SanaTexts" EntitySet="SanaTexts" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ShippingMethods_Websites" Association="Self.FK_ShippingMethods_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="ShippingMethods" EntitySet="ShippingMethods" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteDomains_Website" Association="Self.FK_WebsiteDomains_Website">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="WebsiteDomains" EntitySet="WebsiteDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteDomains_WebsiteDomains" Association="Self.FK_WebsiteDomains_WebsiteDomains">
+            <End Role="WebsiteDomains" EntitySet="WebsiteDomains" />
+            <End Role="WebsiteDomains1" EntitySet="WebsiteDomains" />
+          </AssociationSet>
+          <AssociationSet Name="FK_WebsiteRedirects_Websites" Association="Self.FK_WebsiteRedirects_Websites">
+            <End Role="Websites" EntitySet="Websites" />
+            <End Role="WebsiteRedirects" EntitySet="WebsiteRedirects" />
+          </AssociationSet>
+          <AssociationSet Name="AdminUsersRoles" Association="Self.AdminUsersRoles">
+            <End Role="AdminRoles" EntitySet="AdminRoles" />
+            <End Role="AdminUsers" EntitySet="AdminUsers" />
+          </AssociationSet>
+          <AssociationSet Name="WebsiteLanguages" Association="Self.WebsiteLanguages">
+            <End Role="Languages" EntitySet="Languages" />
+            <End Role="Websites" EntitySet="Websites" />
+          </AssociationSet>
+          <FunctionImport Name="CleanUpBaskets">
+            <Parameter Name="months" Mode="In" Type="Int32" />
+            <Parameter Name="days" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GenerateNumber" ReturnType="Collection(TddDbModel.GenerateNumber_Result)">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="GetHashCode">
+            <Parameter Name="input" Mode="In" Type="String" />
+            <Parameter Name="hash" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="GetMajorVersion">
+          <Parameter Name="p_ver" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetAppID">
+            <Parameter Name="appName" Mode="In" Type="String" />
+            <Parameter Name="appId" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetStateItem" ReturnType="Collection(Binary)">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="InOut" Type="Binary" />
+            <Parameter Name="locked" Mode="InOut" Type="Boolean" />
+            <Parameter Name="lockDate" Mode="InOut" Type="DateTime" />
+            <Parameter Name="lockCookie" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetStateItem2" ReturnType="Collection(Binary)">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="InOut" Type="Binary" />
+            <Parameter Name="locked" Mode="InOut" Type="Boolean" />
+            <Parameter Name="lockAge" Mode="InOut" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetStateItem3" ReturnType="Collection(Binary)">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="InOut" Type="Binary" />
+            <Parameter Name="locked" Mode="InOut" Type="Boolean" />
+            <Parameter Name="lockAge" Mode="InOut" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="InOut" Type="Int32" />
+            <Parameter Name="actionFlags" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetStateItemExclusive" ReturnType="Collection(Binary)">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="InOut" Type="Binary" />
+            <Parameter Name="locked" Mode="InOut" Type="Boolean" />
+            <Parameter Name="lockDate" Mode="InOut" Type="DateTime" />
+            <Parameter Name="lockCookie" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetStateItemExclusive2" ReturnType="Collection(Binary)">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="InOut" Type="Binary" />
+            <Parameter Name="locked" Mode="InOut" Type="Boolean" />
+            <Parameter Name="lockAge" Mode="InOut" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetStateItemExclusive3" ReturnType="Collection(Binary)">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="InOut" Type="Binary" />
+            <Parameter Name="locked" Mode="InOut" Type="Boolean" />
+            <Parameter Name="lockAge" Mode="InOut" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="InOut" Type="Int32" />
+            <Parameter Name="actionFlags" Mode="InOut" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempGetVersion">
+          <Parameter Name="ver" Mode="InOut" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TempInsertStateItemLong">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemLong" Mode="In" Type="Binary" />
+            <Parameter Name="timeout" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempInsertStateItemShort">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="In" Type="Binary" />
+            <Parameter Name="timeout" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempInsertUninitializedItem">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="In" Type="Binary" />
+            <Parameter Name="timeout" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempReleaseStateItemExclusive">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="lockCookie" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempRemoveStateItem">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="lockCookie" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempResetTimeout">
+          <Parameter Name="id" Mode="In" Type="String" />
+          </FunctionImport>
+          <FunctionImport Name="TempUpdateStateItemLong">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemLong" Mode="In" Type="Binary" />
+            <Parameter Name="timeout" Mode="In" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempUpdateStateItemLongNullShort">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemLong" Mode="In" Type="Binary" />
+            <Parameter Name="timeout" Mode="In" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempUpdateStateItemShort">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="In" Type="Binary" />
+            <Parameter Name="timeout" Mode="In" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="In" Type="Int32" />
+          </FunctionImport>
+          <FunctionImport Name="TempUpdateStateItemShortNullLong">
+            <Parameter Name="id" Mode="In" Type="String" />
+            <Parameter Name="itemShort" Mode="In" Type="Binary" />
+            <Parameter Name="timeout" Mode="In" Type="Int32" />
+            <Parameter Name="lockCookie" Mode="In" Type="Int32" />
+          </FunctionImport>
+        </EntityContainer>
+        <ComplexType Name="GenerateNumber_Result">
+          <Property Type="String" Name="Id" Nullable="true" MaxLength="100" />
+          <Property Type="String" Name="Value" Nullable="true" MaxLength="50" />
+        </ComplexType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="TddDbModelStoreContainer" CdmEntityContainer="SanaStore91Entities">
+          <EntitySetMapping Name="AdminRoles">
+            <EntityTypeMapping TypeName="TddDbModel.AdminRole">
+              <MappingFragment StoreEntitySet="AdminRoles">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="AdminUsers">
+            <EntityTypeMapping TypeName="TddDbModel.AdminUser">
+              <MappingFragment StoreEntitySet="AdminUsers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASPStateTempApplications">
+            <EntityTypeMapping TypeName="TddDbModel.ASPStateTempApplication">
+              <MappingFragment StoreEntitySet="ASPStateTempApplications">
+                <ScalarProperty Name="AppId" ColumnName="AppId" />
+                <ScalarProperty Name="AppName" ColumnName="AppName" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ASPStateTempSessions">
+            <EntityTypeMapping TypeName="TddDbModel.ASPStateTempSession">
+              <MappingFragment StoreEntitySet="ASPStateTempSessions">
+                <ScalarProperty Name="SessionId" ColumnName="SessionId" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Expires" ColumnName="Expires" />
+                <ScalarProperty Name="LockDate" ColumnName="LockDate" />
+                <ScalarProperty Name="LockDateLocal" ColumnName="LockDateLocal" />
+                <ScalarProperty Name="LockCookie" ColumnName="LockCookie" />
+                <ScalarProperty Name="Timeout" ColumnName="Timeout" />
+                <ScalarProperty Name="Locked" ColumnName="Locked" />
+                <ScalarProperty Name="SessionItemShort" ColumnName="SessionItemShort" />
+                <ScalarProperty Name="SessionItemLong" ColumnName="SessionItemLong" />
+                <ScalarProperty Name="Flags" ColumnName="Flags" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="BasketLines">
+            <EntityTypeMapping TypeName="TddDbModel.BasketLine">
+              <MappingFragment StoreEntitySet="BasketLines">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="BasketId" ColumnName="BasketId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Baskets">
+            <EntityTypeMapping TypeName="TddDbModel.Basket">
+              <MappingFragment StoreEntitySet="Baskets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="UserKey" ColumnName="UserKey" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CharacterReplacementRules">
+            <EntityTypeMapping TypeName="TddDbModel.CharacterReplacementRule">
+              <MappingFragment StoreEntitySet="CharacterReplacementRules">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Character" ColumnName="Character" />
+                <ScalarProperty Name="Replacement" ColumnName="Replacement" />
+                <ScalarProperty Name="SortId" ColumnName="SortId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Countries">
+            <EntityTypeMapping TypeName="TddDbModel.Country">
+              <MappingFragment StoreEntitySet="Countries">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CountryStates">
+            <EntityTypeMapping TypeName="TddDbModel.CountryState">
+              <MappingFragment StoreEntitySet="CountryStates">
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="StateCode" ColumnName="StateCode" />
+                <ScalarProperty Name="StateName" ColumnName="StateName" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Currencies">
+            <EntityTypeMapping TypeName="TddDbModel.Currency">
+              <MappingFragment StoreEntitySet="Currencies">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Customers">
+            <EntityTypeMapping TypeName="TddDbModel.Customer">
+              <MappingFragment StoreEntitySet="Customers">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="ModificationType" ColumnName="ModificationType" />
+                <ScalarProperty Name="IsValid" ColumnName="IsValid" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerSearchIndexes">
+            <EntityTypeMapping TypeName="TddDbModel.CustomerSearchIndex">
+              <MappingFragment StoreEntitySet="CustomerSearchIndexes">
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="AccountType" ColumnName="AccountType" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerSegments">
+            <EntityTypeMapping TypeName="TddDbModel.CustomerSegment">
+              <MappingFragment StoreEntitySet="CustomerSegments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="CustomerStatistics">
+            <EntityTypeMapping TypeName="TddDbModel.CustomerStatistic">
+              <MappingFragment StoreEntitySet="CustomerStatistics">
+                <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="EntityProperties">
+            <EntityTypeMapping TypeName="TddDbModel.EntityProperty">
+              <MappingFragment StoreEntitySet="EntityProperties">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Sorting" ColumnName="Sorting" />
+                <ScalarProperty Name="RelatedTableFieldName" ColumnName="RelatedTableFieldName" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="EntityName" ColumnName="EntityName" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ExternalShippingMethods">
+            <EntityTypeMapping TypeName="TddDbModel.ExternalShippingMethod">
+              <MappingFragment StoreEntitySet="ExternalShippingMethods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FaqPages">
+            <EntityTypeMapping TypeName="TddDbModel.FaqPage">
+              <MappingFragment StoreEntitySet="FaqPages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="FlexiPages">
+            <EntityTypeMapping TypeName="TddDbModel.FlexiPage">
+              <MappingFragment StoreEntitySet="FlexiPages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="HealthCheckStates">
+            <EntityTypeMapping TypeName="TddDbModel.HealthCheckState">
+              <MappingFragment StoreEntitySet="HealthCheckStates">
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+                <ScalarProperty Name="IsCompleted" ColumnName="IsCompleted" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ItemTranslations">
+            <EntityTypeMapping TypeName="TddDbModel.ItemTranslation">
+              <MappingFragment StoreEntitySet="ItemTranslations">
+                <ScalarProperty Name="ItemId" ColumnName="ItemId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Languages">
+            <EntityTypeMapping TypeName="TddDbModel.Language">
+              <MappingFragment StoreEntitySet="Languages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="DisplayName" ColumnName="DisplayName" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MailTemplates">
+            <EntityTypeMapping TypeName="TddDbModel.MailTemplate">
+              <MappingFragment StoreEntitySet="MailTemplates">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Subject" ColumnName="Subject" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="Content" ColumnName="Content" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MiniProfilerClientTimings">
+            <EntityTypeMapping TypeName="TddDbModel.MiniProfilerClientTiming">
+              <MappingFragment StoreEntitySet="MiniProfilerClientTimings">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MiniProfilerId" ColumnName="MiniProfilerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Start" ColumnName="Start" />
+                <ScalarProperty Name="Duration" ColumnName="Duration" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MiniProfilers">
+            <EntityTypeMapping TypeName="TddDbModel.MiniProfiler">
+              <MappingFragment StoreEntitySet="MiniProfilers">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="RootTimingId" ColumnName="RootTimingId" />
+                <ScalarProperty Name="Started" ColumnName="Started" />
+                <ScalarProperty Name="DurationMilliseconds" ColumnName="DurationMilliseconds" />
+                <ScalarProperty Name="User" ColumnName="User" />
+                <ScalarProperty Name="HasUserViewed" ColumnName="HasUserViewed" />
+                <ScalarProperty Name="MachineName" ColumnName="MachineName" />
+                <ScalarProperty Name="CustomLinksJson" ColumnName="CustomLinksJson" />
+                <ScalarProperty Name="ClientTimingsRedirectCount" ColumnName="ClientTimingsRedirectCount" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MiniProfilerSqlTimingParameters">
+            <EntityTypeMapping TypeName="TddDbModel.MiniProfilerSqlTimingParameter">
+              <MappingFragment StoreEntitySet="MiniProfilerSqlTimingParameters">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="MiniProfilerId" ColumnName="MiniProfilerId" />
+                <ScalarProperty Name="ParentSqlTimingId" ColumnName="ParentSqlTimingId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DbType" ColumnName="DbType" />
+                <ScalarProperty Name="Size" ColumnName="Size" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MiniProfilerSqlTimings">
+            <EntityTypeMapping TypeName="TddDbModel.MiniProfilerSqlTiming">
+              <MappingFragment StoreEntitySet="MiniProfilerSqlTimings">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MiniProfilerId" ColumnName="MiniProfilerId" />
+                <ScalarProperty Name="ParentTimingId" ColumnName="ParentTimingId" />
+                <ScalarProperty Name="ExecuteType" ColumnName="ExecuteType" />
+                <ScalarProperty Name="StartMilliseconds" ColumnName="StartMilliseconds" />
+                <ScalarProperty Name="DurationMilliseconds" ColumnName="DurationMilliseconds" />
+                <ScalarProperty Name="FirstFetchDurationMilliseconds" ColumnName="FirstFetchDurationMilliseconds" />
+                <ScalarProperty Name="IsDuplicate" ColumnName="IsDuplicate" />
+                <ScalarProperty Name="StackTraceSnippet" ColumnName="StackTraceSnippet" />
+                <ScalarProperty Name="CommandString" ColumnName="CommandString" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MiniProfilerTimings">
+            <EntityTypeMapping TypeName="TddDbModel.MiniProfilerTiming">
+              <MappingFragment StoreEntitySet="MiniProfilerTimings">
+                <ScalarProperty Name="RowId" ColumnName="RowId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="MiniProfilerId" ColumnName="MiniProfilerId" />
+                <ScalarProperty Name="ParentTimingId" ColumnName="ParentTimingId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DurationMilliseconds" ColumnName="DurationMilliseconds" />
+                <ScalarProperty Name="StartMilliseconds" ColumnName="StartMilliseconds" />
+                <ScalarProperty Name="IsRoot" ColumnName="IsRoot" />
+                <ScalarProperty Name="Depth" ColumnName="Depth" />
+                <ScalarProperty Name="CustomTimingsJson" ColumnName="CustomTimingsJson" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobileDevices">
+            <EntityTypeMapping TypeName="TddDbModel.MobileDevice">
+              <MappingFragment StoreEntitySet="MobileDevices">
+                <ScalarProperty Name="UUID" ColumnName="UUID" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="MobileNavigationItems">
+            <EntityTypeMapping TypeName="TddDbModel.MobileNavigationItem">
+              <MappingFragment StoreEntitySet="MobileNavigationItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NavigationItems">
+            <EntityTypeMapping TypeName="TddDbModel.NavigationItem">
+              <MappingFragment StoreEntitySet="NavigationItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ParentId" ColumnName="ParentId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="ImportedCategoryId" ColumnName="ImportedCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsItems">
+            <EntityTypeMapping TypeName="TddDbModel.NewsItem">
+              <MappingFragment StoreEntitySet="NewsItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="ShortDescription" ColumnName="ShortDescription" />
+                <ScalarProperty Name="MainDescription" ColumnName="MainDescription" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="ItemDate" ColumnName="ItemDate" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="NewsletterSubscriptions">
+            <EntityTypeMapping TypeName="TddDbModel.NewsletterSubscription">
+              <MappingFragment StoreEntitySet="NewsletterSubscriptions">
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Numberings">
+            <EntityTypeMapping TypeName="TddDbModel.Numbering">
+              <MappingFragment StoreEntitySet="Numbering">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Prefix" ColumnName="Prefix" />
+                <ScalarProperty Name="MaxLength" ColumnName="MaxLength" />
+                <ScalarProperty Name="Number" ColumnName="Number" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="OfflineDataItems">
+            <EntityTypeMapping TypeName="TddDbModel.OfflineDataItem">
+              <MappingFragment StoreEntitySet="OfflineDataItems">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Orders">
+            <EntityTypeMapping TypeName="TddDbModel.Order">
+              <MappingFragment StoreEntitySet="Orders">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+                <ScalarProperty Name="OrderDate" ColumnName="OrderDate" />
+                <ScalarProperty Name="BillToName" ColumnName="BillToName" />
+                <ScalarProperty Name="State" ColumnName="State" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentMethods">
+            <EntityTypeMapping TypeName="TddDbModel.PaymentMethod">
+              <MappingFragment StoreEntitySet="PaymentMethods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="PaymentModuleId" ColumnName="PaymentModuleId" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Active" ColumnName="Active" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PaymentTransactionInfos">
+            <EntityTypeMapping TypeName="TddDbModel.PaymentTransactionInfo">
+              <MappingFragment StoreEntitySet="PaymentTransactionInfos">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="OrderId" ColumnName="OrderId" />
+                <ScalarProperty Name="OrderType" ColumnName="OrderType" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="PaymentMethodId" ColumnName="PaymentMethodId" />
+                <ScalarProperty Name="PaymentStatus" ColumnName="PaymentStatus" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductEnrichments">
+            <EntityTypeMapping TypeName="TddDbModel.ProductEnrichment">
+              <MappingFragment StoreEntitySet="ProductEnrichments">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="PageLayoutId" ColumnName="PageLayoutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductImages">
+            <EntityTypeMapping TypeName="TddDbModel.ProductImage">
+              <MappingFragment StoreEntitySet="ProductImages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="VariantId" ColumnName="VariantId" />
+                <ScalarProperty Name="OrderNo" ColumnName="OrderNo" />
+                <ScalarProperty Name="Image" ColumnName="Image" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductListPages">
+            <EntityTypeMapping TypeName="TddDbModel.ProductListPage">
+              <MappingFragment StoreEntitySet="ProductListPages">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="MetaDescription" ColumnName="MetaDescription" />
+                <ScalarProperty Name="ProductSetId" ColumnName="ProductSetId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="ImportedCategoryId" ColumnName="ImportedCategoryId" />
+                <ScalarProperty Name="PageLayoutId" ColumnName="PageLayoutId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductReviews">
+            <EntityTypeMapping TypeName="TddDbModel.ProductReview">
+              <MappingFragment StoreEntitySet="ProductReviews">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+                <ScalarProperty Name="Rating" ColumnName="Rating" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="StatusId" ColumnName="StatusId" />
+                <ScalarProperty Name="Date" ColumnName="Date" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="ProductTitle" ColumnName="ProductTitle" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Products">
+            <EntityTypeMapping TypeName="TddDbModel.Product">
+              <MappingFragment StoreEntitySet="Products">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Data" ColumnName="Data" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSearchIndexes">
+            <EntityTypeMapping TypeName="TddDbModel.ProductSearchIndex">
+              <MappingFragment StoreEntitySet="ProductSearchIndexes">
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ProductSets">
+            <EntityTypeMapping TypeName="TddDbModel.ProductSet">
+              <MappingFragment StoreEntitySet="ProductSets">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="ImportedCategoryId" ColumnName="ImportedCategoryId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="PromotionCoupons">
+            <EntityTypeMapping TypeName="TddDbModel.PromotionCoupon">
+              <MappingFragment StoreEntitySet="PromotionCoupons">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Code" ColumnName="Code" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Type" ColumnName="Type" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+                <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+                <ScalarProperty Name="MaxUsageCount" ColumnName="MaxUsageCount" />
+                <ScalarProperty Name="UsageCount" ColumnName="UsageCount" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SanaTexts">
+            <EntityTypeMapping TypeName="TddDbModel.SanaText">
+              <MappingFragment StoreEntitySet="SanaTexts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Description" ColumnName="Description" />
+                <ScalarProperty Name="GroupCode" ColumnName="GroupCode" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ServerCommands">
+            <EntityTypeMapping TypeName="TddDbModel.ServerCommand">
+              <MappingFragment StoreEntitySet="ServerCommands">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+                <ScalarProperty Name="CommandId" ColumnName="CommandId" />
+                <ScalarProperty Name="NoExpiration" ColumnName="NoExpiration" />
+                <ScalarProperty Name="Created" ColumnName="Created" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Servers">
+            <EntityTypeMapping TypeName="TddDbModel.Server">
+              <MappingFragment StoreEntitySet="Servers">
+                <ScalarProperty Name="ServerId" ColumnName="ServerId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="IsTaskServer" ColumnName="IsTaskServer" />
+                <ScalarProperty Name="IsActiveTaskServer" ColumnName="IsActiveTaskServer" />
+                <ScalarProperty Name="IsActiveWebServer" ColumnName="IsActiveWebServer" />
+                <ScalarProperty Name="IsWebServer" ColumnName="IsWebServer" />
+                <ScalarProperty Name="LastOnline" ColumnName="LastOnline" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Settings">
+            <EntityTypeMapping TypeName="TddDbModel.Setting">
+              <MappingFragment StoreEntitySet="Settings">
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="SharedInfoes">
+            <EntityTypeMapping TypeName="TddDbModel.SharedInfo">
+              <MappingFragment StoreEntitySet="SharedInfo">
+                <ScalarProperty Name="Key" ColumnName="Key" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShippingMethods">
+            <EntityTypeMapping TypeName="TddDbModel.ShippingMethod">
+              <MappingFragment StoreEntitySet="ShippingMethods">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ProviderType" ColumnName="ProviderType" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Enabled" ColumnName="Enabled" />
+                <ScalarProperty Name="ImagePath" ColumnName="ImagePath" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="SortNo" ColumnName="SortNo" />
+                <ScalarProperty Name="ExternalShippingMethodId" ColumnName="ExternalShippingMethodId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ShopAccounts">
+            <EntityTypeMapping TypeName="TddDbModel.ShopAccount">
+              <MappingFragment StoreEntitySet="ShopAccounts">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="ReferenceId" ColumnName="ReferenceId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="ShopAccountType" ColumnName="ShopAccountType" />
+                <ScalarProperty Name="Activated" ColumnName="Activated" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="LastVisitDate" ColumnName="LastVisitDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="StockRanges">
+            <EntityTypeMapping TypeName="TddDbModel.StockRanx">
+              <MappingFragment StoreEntitySet="StockRanges">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="CategoryId" ColumnName="CategoryId" />
+                <ScalarProperty Name="OutOfStock" ColumnName="OutOfStock" />
+                <ScalarProperty Name="LowStock" ColumnName="LowStock" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TaskConfigurations">
+            <EntityTypeMapping TypeName="TddDbModel.TaskConfiguration">
+              <MappingFragment StoreEntitySet="TaskConfigurations">
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="TasksInfoes">
+            <EntityTypeMapping TypeName="TddDbModel.TasksInfo">
+              <MappingFragment StoreEntitySet="TasksInfo">
+                <ScalarProperty Name="TaskName" ColumnName="TaskName" />
+                <ScalarProperty Name="Status" ColumnName="Status" />
+                <ScalarProperty Name="LastRunTime" ColumnName="LastRunTime" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Themes">
+            <EntityTypeMapping TypeName="TddDbModel.Theme">
+              <MappingFragment StoreEntitySet="Themes">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="VersionInfoes">
+            <EntityTypeMapping TypeName="TddDbModel.VersionInfo">
+              <MappingFragment StoreEntitySet="VersionInfo">
+                <ScalarProperty Name="Major" ColumnName="Major" />
+                <ScalarProperty Name="Minor" ColumnName="Minor" />
+                <ScalarProperty Name="Build" ColumnName="Build" />
+                <ScalarProperty Name="Revision" ColumnName="Revision" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebsiteCountries">
+            <EntityTypeMapping TypeName="TddDbModel.WebsiteCountry">
+              <MappingFragment StoreEntitySet="WebsiteCountries">
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="CountryId" ColumnName="CountryId" />
+                <ScalarProperty Name="Visible" ColumnName="Visible" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebsiteDomains">
+            <EntityTypeMapping TypeName="TddDbModel.WebsiteDomain">
+              <MappingFragment StoreEntitySet="WebsiteDomains">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Domain" ColumnName="Domain" />
+                <ScalarProperty Name="IsDefault" ColumnName="IsDefault" />
+                <ScalarProperty Name="LanguageId" ColumnName="LanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebsiteErpStatuses">
+            <EntityTypeMapping TypeName="TddDbModel.WebsiteErpStatus">
+              <MappingFragment StoreEntitySet="WebsiteErpStatuses">
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="IsOnline" ColumnName="IsOnline" />
+                <ScalarProperty Name="ConnectionErrorsCount" ColumnName="ConnectionErrorsCount" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="WebsiteRedirects">
+            <EntityTypeMapping TypeName="TddDbModel.WebsiteRedirect">
+              <MappingFragment StoreEntitySet="WebsiteRedirects">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Url" ColumnName="Url" />
+                <ScalarProperty Name="WebsiteId" ColumnName="WebsiteId" />
+                <ScalarProperty Name="Fields" ColumnName="Fields" />
+                <ScalarProperty Name="Permanent" ColumnName="Permanent" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Websites">
+            <EntityTypeMapping TypeName="TddDbModel.Website">
+              <MappingFragment StoreEntitySet="Websites">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="DefaultLanguageId" ColumnName="DefaultLanguageId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="AdminUsersRoles" TypeName="TddDbModel.AdminUsersRoles" StoreEntitySet="AdminUsersRoles">
+            <EndProperty Name="AdminRoles">
+              <ScalarProperty Name="Id" ColumnName="AdminRoleId" />
+            </EndProperty>
+            <EndProperty Name="AdminUsers">
+              <ScalarProperty Name="Id" ColumnName="AdminUserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <AssociationSetMapping Name="WebsiteLanguages" TypeName="TddDbModel.WebsiteLanguages" StoreEntitySet="WebsiteLanguages">
+            <EndProperty Name="Languages">
+              <ScalarProperty Name="Id" ColumnName="LanguageId" />
+            </EndProperty>
+            <EndProperty Name="Websites">
+              <ScalarProperty Name="Id" ColumnName="WebsiteId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <FunctionImportMapping FunctionImportName="CleanUpBaskets" FunctionName="TddDbModel.Store.CleanUpBaskets" />
+          <FunctionImportMapping FunctionImportName="GenerateNumber" FunctionName="TddDbModel.Store.GenerateNumber">
+            <ResultMapping>
+              <ComplexTypeMapping TypeName="TddDbModel.GenerateNumber_Result">
+                <ScalarProperty Name="Id" ColumnName="Id" />
+                <ScalarProperty Name="Value" ColumnName="Value" />
+              </ComplexTypeMapping>
+            </ResultMapping>
+          </FunctionImportMapping>
+          <FunctionImportMapping FunctionImportName="GetHashCode" FunctionName="TddDbModel.Store.GetHashCode" />
+          <FunctionImportMapping FunctionImportName="GetMajorVersion" FunctionName="TddDbModel.Store.GetMajorVersion" />
+          <FunctionImportMapping FunctionImportName="TempGetAppID" FunctionName="TddDbModel.Store.TempGetAppID" />
+          <FunctionImportMapping FunctionImportName="TempGetStateItem" FunctionName="TddDbModel.Store.TempGetStateItem" />
+          <FunctionImportMapping FunctionImportName="TempGetStateItem2" FunctionName="TddDbModel.Store.TempGetStateItem2" />
+          <FunctionImportMapping FunctionImportName="TempGetStateItem3" FunctionName="TddDbModel.Store.TempGetStateItem3" />
+          <FunctionImportMapping FunctionImportName="TempGetStateItemExclusive" FunctionName="TddDbModel.Store.TempGetStateItemExclusive" />
+          <FunctionImportMapping FunctionImportName="TempGetStateItemExclusive2" FunctionName="TddDbModel.Store.TempGetStateItemExclusive2" />
+          <FunctionImportMapping FunctionImportName="TempGetStateItemExclusive3" FunctionName="TddDbModel.Store.TempGetStateItemExclusive3" />
+          <FunctionImportMapping FunctionImportName="TempGetVersion" FunctionName="TddDbModel.Store.TempGetVersion" />
+          <FunctionImportMapping FunctionImportName="TempInsertStateItemLong" FunctionName="TddDbModel.Store.TempInsertStateItemLong" />
+          <FunctionImportMapping FunctionImportName="TempInsertStateItemShort" FunctionName="TddDbModel.Store.TempInsertStateItemShort" />
+          <FunctionImportMapping FunctionImportName="TempInsertUninitializedItem" FunctionName="TddDbModel.Store.TempInsertUninitializedItem" />
+          <FunctionImportMapping FunctionImportName="TempReleaseStateItemExclusive" FunctionName="TddDbModel.Store.TempReleaseStateItemExclusive" />
+          <FunctionImportMapping FunctionImportName="TempRemoveStateItem" FunctionName="TddDbModel.Store.TempRemoveStateItem" />
+          <FunctionImportMapping FunctionImportName="TempResetTimeout" FunctionName="TddDbModel.Store.TempResetTimeout" />
+          <FunctionImportMapping FunctionImportName="TempUpdateStateItemLong" FunctionName="TddDbModel.Store.TempUpdateStateItemLong" />
+          <FunctionImportMapping FunctionImportName="TempUpdateStateItemLongNullShort" FunctionName="TddDbModel.Store.TempUpdateStateItemLongNullShort" />
+          <FunctionImportMapping FunctionImportName="TempUpdateStateItemShort" FunctionName="TddDbModel.Store.TempUpdateStateItemShort" />
+          <FunctionImportMapping FunctionImportName="TempUpdateStateItemShortNullLong" FunctionName="TddDbModel.Store.TempUpdateStateItemShortNullLong" />
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

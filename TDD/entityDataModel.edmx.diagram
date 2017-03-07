@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="6adc29936cf0416d8edf708401e2d6a5" Name="Diagram1">
+        <EntityTypeShape EntityType="TddDbModel.AdminRole" Width="1.5" PointX="5.75" PointY="1.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.AdminUser" Width="1.5" PointX="8" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ASPStateTempApplication" Width="1.5" PointX="5.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ASPStateTempSession" Width="1.5" PointX="2.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.BasketLine" Width="1.5" PointX="3" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Basket" Width="1.5" PointX="0.75" PointY="4" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.CharacterReplacementRule" Width="1.5" PointX="7.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Country" Width="1.5" PointX="0.75" PointY="1" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.CountryState" Width="1.5" PointX="4.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Currency" Width="1.5" PointX="6.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Customer" Width="1.5" PointX="8.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.CustomerSearchIndex" Width="1.5" PointX="9.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.CustomerSegment" Width="1.5" PointX="10.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.CustomerStatistic" Width="1.5" PointX="4.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.EntityProperty" Width="1.5" PointX="10.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ExternalShippingMethod" Width="1.5" PointX="11.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.FaqPage" Width="1.5" PointX="10.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.FlexiPage" Width="1.5" PointX="12.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.HealthCheckState" Width="1.5" PointX="12.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ItemTranslation" Width="1.5" PointX="12.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Language" Width="1.5" PointX="0.75" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MailTemplate" Width="1.5" PointX="5.25" PointY="14.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MiniProfilerClientTiming" Width="1.5" PointX="13.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MiniProfiler" Width="1.5" PointX="12.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MiniProfilerSqlTimingParameter" Width="1.5" PointX="0.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MiniProfilerSqlTiming" Width="1.5" PointX="14.75" PointY="6.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MiniProfilerTiming" Width="1.5" PointX="14.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MobileDevice" Width="1.5" PointX="14.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.MobileNavigationItem" Width="1.5" PointX="14.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.NavigationItem" Width="1.5" PointX="16.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.NewsItem" Width="1.5" PointX="16.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.NewsletterSubscription" Width="1.5" PointX="16.75" PointY="8.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Numbering" Width="1.5" PointX="16.75" PointY="11.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.OfflineDataItem" Width="1.5" PointX="16.75" PointY="14.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Order" Width="1.5" PointX="10.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.PaymentMethod" Width="1.5" PointX="12.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.PaymentTransactionInfo" Width="1.5" PointX="14.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ProductEnrichment" Width="1.5" PointX="16.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ProductImage" Width="1.5" PointX="18.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ProductListPage" Width="1.5" PointX="18.75" PointY="3.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ProductReview" Width="1.5" PointX="5.25" PointY="18.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Product" Width="1.5" PointX="0.75" PointY="18.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ProductSearchIndex" Width="1.5" PointX="18.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ProductSet" Width="1.5" PointX="18.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.PromotionCoupon" Width="1.5" PointX="18.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.SanaText" Width="1.5" PointX="8.25" PointY="16.5" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ServerCommand" Width="1.5" PointX="18.75" PointY="17.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Server" Width="1.5" PointX="20.75" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Setting" Width="1.5" PointX="20.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.SharedInfo" Width="1.5" PointX="20.75" PointY="7.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ShippingMethod" Width="1.5" PointX="5.25" PointY="22.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.ShopAccount" Width="1.5" PointX="7.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.StockRanx" Width="1.5" PointX="20.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.TaskConfiguration" Width="1.5" PointX="20.75" PointY="13.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.TasksInfo" Width="1.5" PointX="20.75" PointY="16.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Theme" Width="1.5" PointX="18.75" PointY="20.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.VersionInfo" Width="1.5" PointX="20.75" PointY="19.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.WebsiteCountry" Width="1.5" PointX="3" PointY="0.875" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.WebsiteDomain" Width="1.5" PointX="8.25" PointY="12.625" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.WebsiteErpStatus" Width="1.5" PointX="9.75" PointY="21.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.WebsiteRedirect" Width="1.5" PointX="5.25" PointY="26" IsExpanded="true" />
+        <EntityTypeShape EntityType="TddDbModel.Website" Width="1.5" PointX="3" PointY="21.75" IsExpanded="true" />
+        <AssociationConnector Association="TddDbModel.FK_BasketLine_Basket" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_WebsiteCountries_Countries" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_MailTemplates_Languages" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_SanaTexts_Languages" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_WebsiteDomains_Languages" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_Websites_Languages" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_MailTemplates_Websites" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_ProductReviews_Websites" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_SanaTexts_Websites" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_ShippingMethods_Websites" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_WebsiteDomains_Website" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_WebsiteDomains_WebsiteDomains" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.FK_WebsiteRedirects_Websites" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.AdminUsersRoles" ManuallyRouted="false" />
+        <AssociationConnector Association="TddDbModel.WebsiteLanguages" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>
